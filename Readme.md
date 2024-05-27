@@ -4,8 +4,10 @@ Este é um aplicativo simples de clima escrito em Go que recebe um código posta
 
 
 ## Pré-requisitos
-- [Go](https://golang.org/dl/) 1.22 ou superior
-- [Docker](https://www.docker.com/get-started)
+- Make versão 4.3
+- Go 1.22 ou superior
+- Docker versão 24.0.7
+- Docker Compose versão v2.3.3
 - [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) instalado e configurado
 
 ## Configurar variáveis de ambiente
