@@ -7,10 +7,15 @@ import (
 	"math"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"testing"
 )
 
 func TestGetWeatherByCEP(t *testing.T) {
+	WEATHER_API_KEY := os.Getenv("WEATHER_API_KEY")
+	if WEATHER_API_KEY == "" {
+		t.Fatal("WEATHER_API_KEY not set, set it at .env to run tests")
+	}
 	server := httptest.NewServer(http.HandlerFunc(getWeatherHandler))
 	defer server.Close()
 
@@ -67,7 +72,7 @@ func TestGetWeatherByCEP(t *testing.T) {
 					t.Fatalf("Response body does not contain temp_K")
 				}
 			} else if body != tt.expectedBody {
-				t.Errorf("Expected body |%s|, got |%s|", tt.expectedBody, body)
+				t.Errorf("Expected body %s, got %s", tt.expectedBody, body)
 			}
 		})
 	}
